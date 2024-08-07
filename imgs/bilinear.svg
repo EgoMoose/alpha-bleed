@@ -1,0 +1,68 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 100 140">
+ <title>Visualisation of bilinear interpretation</title>
+ <desc>In this geometric visualisation by CMG Lee, the value at the black spot is the sum of the value at each coloured spot multiplied by the area of the rectangle of the same colour, divided by the total area of all four rectangles.</desc>
+ <defs>
+  <circle id="point" cx="0" cy="0" r="3" stroke="#000000"/>
+  <use id="point_r" xlink:href="#point" fill="#ff9999"/>
+  <use id="point_g" xlink:href="#point" fill="#99ff99"/>
+  <use id="point_b" xlink:href="#point" fill="#9999ff"/>
+  <use id="point_y" xlink:href="#point" fill="#ffff00"/>
+  <use id="point_k" xlink:href="#point" fill="#000000"/>
+  <rect id="rect" x="20" y="20" width="60" height="60" stroke="#cccccc" fill="none"/>
+  <g id="rect_r">
+   <use xlink:href="#rect"/>
+   <rect x="20" y="20" width="10" height="20" fill="#ff9999"/>
+  </g>
+  <g id="rect_g">
+   <use xlink:href="#rect"/>
+   <rect x="30" y="20" width="50" height="20" fill="#99ff99"/>
+  </g>
+  <g id="rect_b">
+   <use xlink:href="#rect"/>
+   <rect x="20" y="40" width="10" height="40" fill="#9999ff"/>
+  </g>
+  <g id="rect_y">
+   <use xlink:href="#rect"/>
+   <rect x="30" y="40" width="50" height="40" fill="#ffff00"/>
+  </g>
+  <g id="rect_rgby">
+   <use xlink:href="#rect_r"/>
+   <use xlink:href="#rect_g"/>
+   <use xlink:href="#rect_b"/>
+   <use xlink:href="#rect_y"/>
+   <rect x="20" y="20" width="60" height="60" stroke="#000000" fill="none"/>
+  </g>
+ </defs>
+ <circle cx="0" cy="0" r="99999" fill="#ffffff"/>
+ <g font-family="sans-serif" font-size="12" text-anchor="middle" stroke="none" fill="#000000">
+  <use xlink:href="#rect_rgby"/>
+  <path d="M 12 20 H 88 M 12 80 H 88 M 20 12 V 88 M 80 12 V 88" stroke="#999999" fill="none"/>
+  <use xlink:href="#point_r" transform="translate(80,80)"/>
+  <use xlink:href="#point_g" transform="translate(20,80)"/>
+  <use xlink:href="#point_b" transform="translate(80,20)"/>
+  <use xlink:href="#point_y" transform="translate(20,20)"/>
+  <use xlink:href="#point_k" transform="translate(30,40)"/>
+
+  <text x="20" y="10"><tspan>(</tspan><tspan font-style="italic">x</tspan><tspan font-size="6">1</tspan><tspan>,</tspan><tspan font-style="italic">y</tspan><tspan font-size="6">2</tspan><tspan>)</tspan></text>
+  <text x="80" y="10"><tspan>(</tspan><tspan font-style="italic">x</tspan><tspan font-size="6">2</tspan><tspan>,</tspan><tspan font-style="italic">y</tspan><tspan font-size="6">2</tspan><tspan>)</tspan></text>
+  <text x="20" y="95"><tspan>(</tspan><tspan font-style="italic">x</tspan><tspan font-size="6">1</tspan><tspan>,</tspan><tspan font-style="italic">y</tspan><tspan font-size="6">1</tspan><tspan>)</tspan></text>
+  <text x="80" y="95"><tspan>(</tspan><tspan font-style="italic">x</tspan><tspan font-size="6">2</tspan><tspan>,</tspan><tspan font-style="italic">y</tspan><tspan font-size="6">1</tspan><tspan>)</tspan></text>
+  <text x="45" y="50"><tspan>(</tspan><tspan font-style="italic">x</tspan><tspan>,</tspan><tspan font-style="italic">y</tspan><tspan>)</tspan></text>
+
+  <text x="30" y="114">=</text>
+  <text x="63.5" y="114">+</text>
+  <text x="97" y="114">+</text>
+  <text x="63.5" y="134">+</text>
+  <use xlink:href="#point_k" transform="translate(4,110)"/>
+  <use xlink:href="#rect_rgby" transform="translate(2,95) scale(0.3)"/>
+  <use xlink:href="#point_y" transform="translate(38,110)"/>
+  <use xlink:href="#rect_y" transform="translate(36,95) scale(0.3)" stroke="#000000"/>
+  <use xlink:href="#point_b" transform="translate(72,110)"/>
+  <use xlink:href="#rect_b" transform="translate(70,95) scale(0.3)" stroke="#000000"/>
+  <use xlink:href="#point_g" transform="translate(38,130)"/>
+  <use xlink:href="#rect_g" transform="translate(36,115) scale(0.3)" stroke="#000000"/>
+  <use xlink:href="#point_r" transform="translate(72,130)"/>
+  <use xlink:href="#rect_r" transform="translate(70,115) scale(0.3)" stroke="#000000"/>
+ </g>
+</svg>
