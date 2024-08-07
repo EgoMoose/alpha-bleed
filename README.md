@@ -2,6 +2,12 @@
 
 A tool written in rust to bleed an image's border colors into their transparent neighbors. It's primarily intended for use in applications that use bilinear filtering.
 
+Using is as simple as:
+
+```
+alpha_bleed <input.png> <output.png>
+```
+
 ## Bilinear Filtering
 
 A very common method for scaling images up and down is bilinear filtering. Each pixel in the new image is mapped to the original image space. This often results in coordinates that land somewhere in-between the original pixels (i.e. floats as opposed to ints). The converted coordinates are then used to find the closest neighboring pixels (ints). Finally, by weighing the area between each neighbor an interpolated pixel is achieved for the new images.
