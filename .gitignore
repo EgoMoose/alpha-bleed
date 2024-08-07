@@ -1,0 +1,6 @@
+/target
+/output
+
+*.png
+*.ds_store
+*.py
