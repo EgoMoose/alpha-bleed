@@ -12,7 +12,7 @@ const NEIGHBOR_OFFSETS: [(i32, i32); 8] = [
     (1, 1),
 ];
 
-pub fn alpha_bleed(image: &mut RgbaImage, thickness: u32) {
+pub fn alpha_bleed(image: &mut RgbaImage, thickness: usize) {
     let (width, height) = image.dimensions();
 
     let mut visited = vec![false; (width * height) as usize];
