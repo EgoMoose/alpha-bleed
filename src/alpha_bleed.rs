@@ -58,6 +58,8 @@ pub fn alpha_bleed(image: &mut RgbaImage, thickness: usize) {
                 visited[flat_index] = true;
                 pixel_queue.push_back((x, y));
             }
+
+            image.put_pixel(x, y, Rgba([0, 0, 0, 0]));
         }
     }
 
