@@ -61,13 +61,14 @@ pub fn alpha_bleed(image: &mut RgbaImage, thickness: u32) {
         }
     }
 
-    let mut loop_count: u32 = 0;
-    let mut cycle_length = pixel_queue.len();
-    loop {
-        loop_count += 1;
+    for _ in 0..thickness {
+        let queue_length = pixel_queue.len();
+        if queue_length == 0 {
+            break;
+        }
 
-        let mut next_cycle_length = 0;
-        for _ in 0..cycle_length {
+        let mut mutated_pixels: Vec<usize> = vec![0; queue_length];
+        for _ in 0..queue_length {
             if let Some((x, y)) = pixel_queue.pop_front() {
                 let flat_index = (y * width + x) as usize;
 
@@ -80,17 +81,14 @@ pub fn alpha_bleed(image: &mut RgbaImage, thickness: u32) {
                     if can_sample[flat_neighbor_index] {
                         let neighbor_pixel = image.get_pixel(x_neighbor, y_neighbor);
 
-                        if loop_count <= thickness {
-                            color.0 += neighbor_pixel[0] as u16;
-                            color.1 += neighbor_pixel[1] as u16;
-                            color.2 += neighbor_pixel[2] as u16;
+                        color.0 += neighbor_pixel[0] as u16;
+                        color.1 += neighbor_pixel[1] as u16;
+                        color.2 += neighbor_pixel[2] as u16;
 
-                            contributing += 1;
-                        }
+                        contributing += 1;
                     } else if !visited[flat_neighbor_index] {
                         visited[flat_neighbor_index] = true;
                         pixel_queue.push_back((x_neighbor, y_neighbor));
-                        next_cycle_length += 1;
                     }
                 }
 
@@ -103,15 +101,15 @@ pub fn alpha_bleed(image: &mut RgbaImage, thickness: u32) {
                 ]);
 
                 image.put_pixel(x, y, new_pixel);
-                can_sample[flat_index] = true;
+                mutated_pixels.push(flat_index);
             }
         }
 
-        if next_cycle_length == 0 {
-            break;
+        for _ in 0..queue_length {
+            if let Some(flat_index) = mutated_pixels.pop() {
+                can_sample[flat_index] = true;
+            }
         }
-
-        cycle_length = next_cycle_length;
     }
 }
 
