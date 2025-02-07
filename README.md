@@ -115,12 +115,6 @@ This results in a process that looks like this:
 3. <img src="imgs/tree_bled40.png" width="200">
 4. <img src="imgs/tree_bled_full.png" width="200">
 
-A key difference of this tool compared to other alpha bleeding tools is that instead of bleeding into the entire image we only bleed one pixel.
-
-<img src="imgs/tree_bled_unique.png">
-
-We only care about cases when bilinear filtering results in a pixel that's not fully transparent and as such we don't need to bleed into every transparent pixel. In fact we actually save a bit on memory since the file can be compressed more efficiently.
-
 ## In Action
 
 Let's see what this does to our end result with a few example. First let's revisit the red with transparent green example.
