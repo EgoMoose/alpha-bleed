@@ -14,7 +14,7 @@ fn main() {
             let mut rgba8_image = image.to_rgba8();
 
             alpha_bleed::alpha_bleed(&mut rgba8_image);
-            alpha_bleed::make_opaque(&mut rgba8_image);
+            // alpha_bleed::make_opaque(&mut rgba8_image);
 
             match rgba8_image.save(&output_path) {
                 Ok(_) => println!("Successfully saved ./{}", &args[1]),
